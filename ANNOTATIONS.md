@@ -8,8 +8,16 @@ Cria um análise de todas as dependência buildando a aplicação e verificando 
 
 É basicamente diminuir no dev tools do chrome a conexão da internet para velocidade "3g", recarregar a aplicação e analisar como ela se comporta. Verificamos que os principais gargalos são os grandes chunks e as imagens.
 
-## Resolução
+### Resolução
 
 Para quebrar nosso código em partes menores basta adicionarmos o lazy load nas rotas.
 
 Também podemos ativar o pre fetch das rotas para carregar paralelamente as próximas rotas
+
+## Verificando desempenho
+
+No chrome dev tools na aba de performance podemos realizar um throttling de CPU, clique em "record" e analise como a aplicação se comporta.
+
+### Renderização da lista
+
+Podemos notar muitas renderizações desnecessárias no Search, nesse caso, por se tratar de uma lista estática (com pouca ou nenhuma alteração) podemos utilizar o react memo.

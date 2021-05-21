@@ -16,12 +16,12 @@ const Search = React.lazy(() =>
   import(
     /* webpackPrefetch: true */
     /* webpackChunkName: "Search" */
+    /* webpackPreload: true */
     './Pages/Search'
   )
 );
 const Account = React.lazy(() => 
   import(
-    /* webpackPrefetch: true */
     /* webpackChunkName: "Account" */
     './Pages/Account'
   )

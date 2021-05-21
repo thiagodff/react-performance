@@ -9,11 +9,13 @@ import { getItems } from "../Utils/filterCities";
 import { useForceRerender } from "../Hooks/useForceRerender";
 
 function Search() {
+  // truque para forçar o componente renderizar novamente
   const reRender = useForceRerender();
 
   const [inputValue, setInputValue] = React.useState("");
 
-  const allItems = getItems(inputValue);
+  // const allItems = getItems(inputValue);
+  const allItems = React.useMemo(() => getItems(inputValue), [inputValue]);
 
   const items = allItems.slice(0, 100);
 
