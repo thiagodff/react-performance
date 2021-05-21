@@ -21,3 +21,11 @@ No chrome dev tools na aba de performance podemos realizar um throttling de CPU,
 ### Renderização da lista
 
 Podemos notar muitas renderizações desnecessárias no Search, nesse caso, por se tratar de uma lista estática (com pouca ou nenhuma alteração) podemos utilizar o react memo.
+
+Devemos tomar cuidado com o React memo pois ele quebrar algumas partes da aplicação, não sendo indicado para todos os usos
+
+## Classes vs Funções
+
+Às classes não são nativas do JS, é necessário transpilar uma classe peo Babel para que o navegador entenda o código, ele adiciona mais código ainda para tudo funcionar, é um overload desnecessário.
+
+Por isso o ideal é substituir todas as classes por funções, pois assim iremos diminuir o bundle size. Em um teste simples, o bundle size de um componente com classe foi de 4,7 kb para 2,4 kb utilizando função e hooks, ou seja, um ganho de quase de 50%.
