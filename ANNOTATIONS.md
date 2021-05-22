@@ -65,3 +65,13 @@ Ao lidar com múltiplas threads surgem alguns problemas:
 - Maior consumo de memória
 - Maior gasto de processamento
 - As threads conversam via emissão de eventos
+
+## Tailwind
+
+No arquivo de configuração do tailwind.config.js podemos passar um array chamado purge, em que iremos colocar os arquivos que o tailwind pode verificar para remover o CSS que não está sendo utilizado no build, deixando, assim, o bundle final mais leve.
+
+```js
+{
+  purge: ["./src/**/*.js"],
+}
+```
