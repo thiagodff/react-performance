@@ -39,3 +39,29 @@ https://github.com/you-dont-need/You-Dont-Need-Momentjs
 que é uma doc inspirada no [You Might Not Need JQuey](http://youmightnotneedjquery.com/).
 
 Ou até mesmo podemos substituir por outra biblioteca mais leve, como o date-fns no nosso caso.
+
+## Single thread
+
+O JS por rodar de forma single thread, quando executamos uma função pesada a nossa aplicação inteira fica travada, que é o que acontece quando clicamos para fazer Download Personal Data na pagina de Account
+
+### Resolução com Web Worker
+
+https://github.com/webpack-contrib/worker-loader
+
+https://github.com/developit/workerize-loader
+
+Conseguimos transformar qualquer pacote da nossa aplicação em um pacote que pode ser utilizado dentro de um web worker.
+
+Realizamos um import para dentro de um módulo utilizando o webpack para rodar o código dentro de um web worker.
+
+Para isso iremos isolar nossa função em src/Utils/worker.js e dentro do Account iremos importar esse worker utilizando o workerize-loader.
+
+E com isso conseguimos pegar toda complexidade da função de gerar o CSV e faze-la rodar em uma thread separada
+
+### Tradeoff
+
+Ao lidar com múltiplas threads surgem alguns problemas:
+
+- Maior consumo de memória
+- Maior gasto de processamento
+- As threads conversam via emissão de eventos

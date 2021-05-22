@@ -3,11 +3,19 @@ import Title from "../Components/Title/Title";
 import image1 from "../Images/1.webp";
 import { formatDistance } from "date-fns";
 
-import { onCsvClick } from "../Utils/worker";
+// import { onCsvClick } from "../Utils/worker";
+import worker from "workerize-loader!../Utils/worker"; // eslint-disable-line import/no-webpack-loader-syntax
 
 export default function Account() {
+  const { onCsvClick } = worker();
 
-  const getProcessedData = () => onCsvClick();
+  async function getProcessedData() {
+    try {
+      await onCsvClick();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
