@@ -26,6 +26,16 @@ Devemos tomar cuidado com o React memo pois ele quebrar algumas partes da aplica
 
 ## Classes vs Funções
 
-Às classes não são nativas do JS, é necessário transpilar uma classe peo Babel para que o navegador entenda o código, ele adiciona mais código ainda para tudo funcionar, é um overload desnecessário.
+Às classes não são nativas do JS, é necessário transpilar uma classe peo Babel para que o navegador entenda o código, ele adiciona mais código ainda para tudo funcionar, é um overhead desnecessário.
 
 Por isso o ideal é substituir todas as classes por funções, pois assim iremos diminuir o bundle size. Em um teste simples, o bundle size de um componente com classe foi de 4,7 kb para 2,4 kb utilizando função e hooks, ou seja, um ganho de quase de 50%.
+
+## Importações desnecessárias
+
+Em Accounts estamos importando toda a biblioteca do moment para fazer algo simples, podemos utilizar uma ferramenta para nos auxiliar à utilizar apenas o necessário do moment
+
+https://github.com/you-dont-need/You-Dont-Need-Momentjs
+
+que é uma doc inspirada no [You Might Not Need JQuey](http://youmightnotneedjquery.com/).
+
+Ou até mesmo podemos substituir por outra biblioteca mais leve, como o date-fns no nosso caso.
